@@ -114,7 +114,7 @@ void loop() {
   delay(300);
 
   // BME280 temperature and humidity values
-  float BME280_t = bme.readTemperature()-1;
+  float BME280_t = bme.readTemperature();
   float BME280_h = bme.readHumidity();
   float BME280_p = bme.readPressure()/100;
   delay(300);
