@@ -1,11 +1,4 @@
 /*************************************************** 
-  This is a example sketch demonstrating the graphics
-  capabilities of the SSD1331 library  for the 0.96" 
-  16-bit Color OLED with SSD1331 driver chip
-
-  Pick one up today in the adafruit shop!
-  ------> http://www.adafruit.com/products/684
-
   These displays use SPI to communicate, 4 or 5 pins are required to  
   interface
   Adafruit invests time and resources providing this open source code, 
