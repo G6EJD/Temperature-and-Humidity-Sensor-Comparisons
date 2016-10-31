@@ -179,7 +179,38 @@ void display_temp_humi(String device, int x, int y, float temp, float humi, Stri
   display.print(char(240));
   display.print(tolerance1+char(247)+"C");
   if (tolerance2 != "") {
-    display.print(", "+char(240));
+    
+  // Display temperature and humidity for each device. Humidity = 0 when device does not support that function
+  display_temp_humi("Si7051",    0,  50, Si7051_t,      0,  "0.1","");
+  display_temp_humi("MCP9808", 110,  50, MCP9808_t,     0,  "0.25","");
+  display_temp_humi("SHT31D",  220,  50, SHT31_t, SHT31_h,  "0.3","2");
+  display_temp_humi("DHT22",     0, 150, DHT22_t, DHT22_h,  "0.5","2");
+  display_temp_humi("BME280",  110, 150, BME280_t, BME280_h,"0.5","3");
+  display_temp_humi("DS18B20", 220, 150, DS18B20_t, 0,      "0.5","");
+  delay(1000);
+}
+void display_temp_humi(String device, int x, int y, float temp, float humi, String tolerance1, String tolerance2) {
+  display.setCursor(x,y);
+  display.setTextColor(ILI9341_GREEN);
+  display.print(device);
+  display.setCursor(x,y+20);
+  display.setTextColor(ILI9341_RED);
+  display.print(temp,1);
+  display.print(char(247));
+  display.print("C");
+  if (humi > 0) {
+    display.setCursor(x,y+40);
+    display.setTextColor(ILI9341_MAGENTA);
+    display.print(humi,1);
+    display.print("%rH");
+  }
+  display.setTextColor(ILI9341_WHITE);
+  display.setCursor(x,y+60);
+  display.setTextSize(1);
+  display.print(char(240));
+  display.print(tolerance1+char(247)+"C");
+  if (tolerance2 != "") {
+    display.print(", "+String(char(240)));
     display.print(tolerance2+"%rH");
   }
   display.setTextSize(2);
